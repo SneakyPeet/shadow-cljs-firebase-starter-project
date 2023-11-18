@@ -1,26 +1,28 @@
 {
-  "functions": {
-    "source": "functions"
-  },
   "emulators": {
     "auth": {
-      "port": 9099
+      "port": 9099,
+      "host": "localhost"
     },
     "functions": {
-      "port": 5001
+      "port": 5001,
+      "host": "localhost"
     },
     "firestore": {
-      "port": 9098
+      "port": 9098,
+      "host": "localhost"
     },
     "hosting": {
       "port": 9096,
       "host": "localhost"
     },
     "pubsub": {
-      "port": 9097
+      "port": 9097,
+      "host": "localhost"
     },
     "storage": {
-      "port": 9199
+      "port": 9199,
+      "host": "localhost"
     },
     "ui": {
       "enabled": true
@@ -29,7 +31,7 @@
   },
   "extensions": {},
   "hosting": {
-    "public": "dist",
+    "public": "../public",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -47,5 +49,8 @@
   },
   "firestore": {
     "rules": "firestore.rules"
+  },
+  "functions": {
+    "source": "functions"
   }
 }
