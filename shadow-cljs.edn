@@ -1,0 +1,23 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src",
+  "test"]
+
+ :dependencies
+ [[reagent "1.2.0"]
+  [cider/cider-nrepl "0.43.1"]]
+
+ :dev-http
+ {3020 "public"}
+
+ :builds
+ {:app {:target :browser
+        :output-dir "public/js"
+        :asset-path "/js"
+        :module-hash-names true
+
+        :dev {:modules {:main {:entries [dev.core]
+                               :init-fn dev.core/init!}}}
+
+        :release {:modules {:main {:entries [main.core]
+                                   :init-fn main.core/init!}}}}}}
