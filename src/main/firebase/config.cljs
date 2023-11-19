@@ -2,7 +2,8 @@
   (:require [shadow.resource :as rc]
             ["firebase/app" :as firebase-app]
             ["firebase/auth" :as firebase-auth]
-            ["firebase/firestore" :as firebase-firestore]))
+            ["firebase/firestore" :as firebase-firestore]
+            ["firebase/storage" :as firebase-storage]))
 
 (def firebase-config  (js/JSON.parse (rc/inline "config.json")))
 
@@ -11,3 +12,5 @@
 (def auth (firebase-auth/getAuth))
 
 (def firestore (firebase-firestore/getFirestore))
+
+(def storage (firebase-storage/getStorage))

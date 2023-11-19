@@ -16,3 +16,7 @@
 
 (defn firestore-host-port []
   (emulator-host-port "firestore"))
+
+
+(defn storage-host-port []
+  (emulator-host-port "storage"))

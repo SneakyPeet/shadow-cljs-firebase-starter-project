@@ -27,7 +27,8 @@
                                :init-fn dev.core/init!}}
 
               :closure-defines {dev.firebase.core/use-auth-emulator? true
-                                dev.firebase.core/use-firestore-emulator? true}}
+                                dev.firebase.core/use-firestore-emulator? true
+                                dev.firebase.core/use-storage-emulator? true}}
 
         :release {:modules {:main {:entries [main.core]
                                    :init-fn main.core/init!}}}}}}

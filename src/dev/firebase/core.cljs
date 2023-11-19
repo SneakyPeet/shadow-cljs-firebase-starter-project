@@ -2,11 +2,13 @@
   (:require [dev.firebase.config :as dev-config]
             [main.firebase.config :as config]
             ["firebase/auth" :as firebase-auth]
-            ["firebase/firestore" :as firebase-firestore]))
+            ["firebase/firestore" :as firebase-firestore]
+            ["firebase/storage" :as firebase-storage]))
 
 
 (goog-define use-auth-emulator? false)
 (goog-define use-firestore-emulator? false)
+(goog-define use-storage-emulator? false)
 
 
 (defn- init-auth-emulator! []
@@ -24,6 +26,14 @@
     (prn (str "Using Firestore Emulator On: " location))))
 
 
+(defn- init-storage-emulator! []
+  (let [[host port] (dev-config/firestore-host-port)
+        location    (str "http://" host ":" port)]
+    (firebase-storage/connectStorageEmulator config/storage host port)
+    (prn (str "Using Storage Emulator On: " location))))
+
+
 (defn init! []
   (when use-auth-emulator? (init-auth-emulator!))
-  (when use-firestore-emulator? (init-firestore-emulator!)))
+  (when use-firestore-emulator? (init-firestore-emulator!))
+  (when use-storage-emulator? (init-storage-emulator!)))
