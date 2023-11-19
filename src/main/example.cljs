@@ -2,7 +2,8 @@
   (:require [reagent.core :as r]
             [main.firebase.config :as firebase]
             ["firebase/auth" :as firebase-auth]
-            ["firebase/firestore" :as firebase-firestore]))
+            ["firebase/firestore" :as firebase-firestore]
+            ["firebase/functions" :as firebase-functions]))
 
 
 (defonce ^:private *app-state (r/atom {:logged-in? false
@@ -50,6 +51,10 @@
   (firebase-firestore/deleteDoc
     (firebase-firestore/doc firebase/firestore "items" id)))
 
+;; FUNCTIONS
+
+(def ^:private echo-message (firebase-functions/httpsCallable firebase/functions "echo"))
+
 ;; EVENTS
 
 (defn- log-in! []
@@ -75,12 +80,19 @@
   (-> (remove-item! id)
       (.catch #(js/alert "Make sure firebase emulators are running"))))
 
+
+(defn- call-function! []
+  (-> (echo-message {:foo "bar"})
+      (.then #(js/alert (str "Function call success on: " (.. % -data -time))))
+      (.catch #(js/alert "Make sure firebase emulators are running"))))
+
 ;; VIEWS
 
 (defn- logged-in-view [app-state]
   [:div
    [:h3 "Welcome"]
    [:button.paper-btn.btn-primary {:on-click add-entity!} "Add random entity"]
+   [:button.paper-btn.btn-primary {:on-click call-function!} "Echo function"]
    [:button {:on-click log-out!} "Log Out"]
    [:ul
     (->> (:items app-state)
