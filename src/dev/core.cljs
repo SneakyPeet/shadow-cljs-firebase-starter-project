@@ -1,9 +1,9 @@
 (ns dev.core
   (:require [main.core]
-            [dev.firebase.config :as firebase]))
+            [dev.firebase.core :as firebase-dev]))
 
 
 (defn init! []
   (prn "dev.core")
-  (prn firebase/config)
+  (firebase-dev/init!)
   (main.core/init!))

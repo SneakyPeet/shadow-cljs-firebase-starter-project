@@ -18,7 +18,10 @@
         :module-hash-names true
 
         :dev {:modules {:main {:entries [dev.core]
-                               :init-fn dev.core/init!}}}
+                               :init-fn dev.core/init!}}
+
+              :closure-defines {dev.firebase.core/use-auth-emulator? false
+                                dev.firebase.core/use-db-emulator? false}}
 
         :release {:modules {:main {:entries [main.core]
                                    :init-fn main.core/init!}}}}}}
