@@ -9,11 +9,11 @@
   [cider/cider-nrepl "0.43.1"]]
 
  :dev-http
- {3020 "public"}
+ {3020 "firebase/public"}
 
  :builds
  {:app {:target :browser
-        :output-dir "public/js"
+        :output-dir "firebase/public/js"
         :asset-path "/js"
         :module-hash-names true
 

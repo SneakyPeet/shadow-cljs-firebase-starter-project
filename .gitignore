@@ -1,5 +1,5 @@
 node_modules/
-public/js
+firebase/public/js
 
 /target
 /checkouts
@@ -19,4 +19,6 @@ pom.xml.asc
 .hgignore
 .hg/
 
-functions/index.js
+firebase/functions/index.js
+/firebase/.firebase/
+/firebase/.firebaserc
