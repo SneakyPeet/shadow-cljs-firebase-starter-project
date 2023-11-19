@@ -8,11 +8,11 @@
 
 
 (defn echo
-  "Echo the passed in query parameters merged with the current time"
-  [req res]
+  "Function callable from the front end"
+  [req]
   (functions/logger.log "hello")
-  (.send res (clj->js {:data {:time  (.toString (js/Date.))}})))
+  (clj->js {:time (.toString (js/Date.))}))
 
 
 (def exports
-  #js {:echo (functions-https/onRequest echo)})
+  #js {:echo (functions-https/onCall echo)})

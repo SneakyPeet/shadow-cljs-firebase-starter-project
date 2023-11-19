@@ -38,7 +38,7 @@
                   :build-hooks [(dev.deploy/app-post-build-release-hook)]}}
 
   :functions {:target           :node-library
-              :js-options       {:js-package-dirs ["functions/node_modules"]}
+              :js-options       {:js-package-dirs ["firebase/functions/node_modules"]}
               :compiler-options {:infer-externs :auto}
-              :output-to        "functions/index.js"
+              :output-to        "firebase/functions/index.js"
               :exports-var      main.functions/exports}}}

@@ -82,7 +82,7 @@
 
 
 (defn- call-function! []
-  (-> (echo-message {:foo "bar"})
+  (-> (echo-message)
       (.then #(js/alert (str "Function call success on: " (.. % -data -time))))
       (.catch #(js/alert "Make sure firebase emulators are running"))))
 
