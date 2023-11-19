@@ -23,6 +23,8 @@
          :output-feature-set :es7
          }
 
+        :build-hooks [(dev.deploy/reset-for-dev-hook)]
+
         :dev {:modules {:main {:entries [dev.core]
                                :init-fn dev.core/init!}}
 
