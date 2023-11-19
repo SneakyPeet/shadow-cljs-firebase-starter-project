@@ -1,3 +1,9 @@
+# Shadow CLJS Firebase Start Project
+
+
+WORK IN PROGRESS
+
+
 # Shaddow CLJS
 
 ## compile a build once and exit
