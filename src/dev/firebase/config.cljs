@@ -5,6 +5,14 @@
 (def config (js->clj (js/JSON.parse (rc/inline "firebase.json"))))
 
 
+(defn- emulator-host-port [k]
+  [(get-in config ["emulators" k "host"])
+   (get-in config ["emulators" k "port"])])
+
+
 (defn auth-host-port []
-  [(get-in config ["emulators" "auth" "host"])
-   (get-in config ["emulators" "auth" "port"])])
+  (emulator-host-port "auth"))
+
+
+(defn firestore-host-port []
+  (emulator-host-port "firestore"))

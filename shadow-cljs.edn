@@ -17,11 +17,17 @@
         :asset-path "/js"
         :module-hash-names true
 
+        :compiler-options
+        {
+         ;; set this to solve the "failed to convert sources" issue in firestore
+         :output-feature-set :es7
+         }
+
         :dev {:modules {:main {:entries [dev.core]
                                :init-fn dev.core/init!}}
 
               :closure-defines {dev.firebase.core/use-auth-emulator? false
-                                dev.firebase.core/use-db-emulator? false}}
+                                dev.firebase.core/use-firestore-emulator? false}}
 
         :release {:modules {:main {:entries [main.core]
                                    :init-fn main.core/init!}}}}}}
