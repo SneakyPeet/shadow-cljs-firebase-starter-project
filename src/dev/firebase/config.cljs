@@ -20,3 +20,7 @@
 
 (defn storage-host-port []
   (emulator-host-port "storage"))
+
+
+(defn functions-host-port []
+  (emulator-host-port "functions"))

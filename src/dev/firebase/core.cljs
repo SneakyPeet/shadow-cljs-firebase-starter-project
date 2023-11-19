@@ -3,12 +3,14 @@
             [main.firebase.config :as config]
             ["firebase/auth" :as firebase-auth]
             ["firebase/firestore" :as firebase-firestore]
-            ["firebase/storage" :as firebase-storage]))
+            ["firebase/storage" :as firebase-storage]
+            ["firebase/functions" :as firebase-functions]))
 
 
 (goog-define use-auth-emulator? false)
 (goog-define use-firestore-emulator? false)
 (goog-define use-storage-emulator? false)
+(goog-define use-functions-emulator-from-web? false)
 
 
 (defn- init-auth-emulator! []
@@ -27,13 +29,21 @@
 
 
 (defn- init-storage-emulator! []
-  (let [[host port] (dev-config/firestore-host-port)
+  (let [[host port] (dev-config/storage-host-port)
         location    (str "http://" host ":" port)]
     (firebase-storage/connectStorageEmulator config/storage host port)
     (prn (str "Using Storage Emulator On: " location))))
 
 
+(defn- init-functions-emulator! []
+  (let [[host port] (dev-config/functions-host-port)
+        location    (str "http://" host ":" port)]
+    (firebase-functions/connectFunctionsEmulator config/functions host port)
+    (prn (str "Using Functions Emulator On: " location))))
+
+
 (defn init! []
   (when use-auth-emulator? (init-auth-emulator!))
   (when use-firestore-emulator? (init-firestore-emulator!))
-  (when use-storage-emulator? (init-storage-emulator!)))
+  (when use-storage-emulator? (init-storage-emulator!))
+  (when use-functions-emulator-from-web? (init-functions-emulator!)))
