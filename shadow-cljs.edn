@@ -32,7 +32,8 @@
                                 dev.firebase.core/use-functions-emulator-from-web? true}}
 
         :release {:modules {:main {:entries [main.core]
-                                   :init-fn main.core/init!}}}}
+                                   :init-fn main.core/init!}}
+                  :build-hooks [(dev.deploy/app-post-build-release-hook)]}}
 
   :functions {:target           :node-library
               :js-options       {:js-package-dirs ["functions/node_modules"]}
